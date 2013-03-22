@@ -1,0 +1,720 @@
+<DOCCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Inspirational, stylish medical alert and breast cancer bracelets</title>
+
+  <!-- Included CSS Files -->
+  <!-- Included CSS Files -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script src="galleria/galleria-1.2.8.min.js"></script>
+  <link rel="stylesheet" href="foundation/stylesheets/foundation.css">
+  
+	<style>
+			
+		.home:hover {background:#2BA6CB;}
+		
+		body {background-image:url('../images/finalbackground.jpg');}
+		
+		
+		.four mobile-two columns{background:white;}
+
+		.selectedTab {background:#228B22; font-weight:bold; -moz-box-shadow: 3px 3px 4px #000;
+		-webkit-box-shadow: 3px 3px 4px #000; box-shadow: 3px 3px 4px #000;	/* For IE 8 */	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+		* For IE 5.5 - 7 */ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+		margin-bottom:10px;
+			}
+		
+		.selectedSubTab{background-color:#5DA423}
+		
+		.tabs.pill dd.active a{background-color:#5DA423}
+		
+		.custBtn{background:#5DA423; font-weight:bold;  border: 1px solid #396516;
+			-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000; box-shadow: 3px 3px 4px #000;	/* For IE 8 */	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+	margin-bottom:10px;
+			}
+			
+			.custBtn:hover{background-color: #457A1A;}
+			
+			
+			
+			
+	</style>
+	
+	<script>
+		
+		//may need to fix, if user goes from cart back to webpage need to keep values
+		//if user leaves webpage and comes back, may need to keep values
+		//need to add product hover behavior
+		var itemsInCart=0;
+		
+		$(document).ready(
+			function hoverOverProduct(){
+				$(".productPanel").hover(function(){
+					
+					var x=$(this).find('img');
+					var y=$(this).find('div');
+					$(x).css("opacity", ".7");
+					$(y).css("background-color","#e6e6e6");
+					$(this).css( 'cursor', 'pointer' );
+								
+					
+				},
+				function(){
+					var x=$(this).find('img');
+					var y=$(this).find('div')
+					$(x).css("opacity", "1");
+					$(y).css("background-color","#f2f2f2");
+				});
+			});
+		
+		$(document).ready(
+			function moveToProductPane(){
+				$(".productPanel").click(function(){
+					var detPane=$("#detailsPane");
+					var hiddenFields=$("#productDetails");
+					
+					var productName=$(this).find('h5')[0].innerText;
+					var price=$(this).find('h6')[0].innerText;
+					var prodPicture=$(this).find('img').attr("src");
+					
+					$("#selectedProductPic").attr("src", prodPicture);
+					$("#selectedProductPic").css("height", "283px");
+					$("#selectedProductPic").css("width", "283px");
+					
+					//actions
+					$(detPane).find("h3")[0].innerText=productName;
+					$(detPane).find("h5")[0].innerText=price;
+					$(hiddenFields).css("display", "block");
+					
+					
+					
+					if (productName.toLowerCase().indexOf("alert") >= 0)
+					{
+						var engr=$(".engravingForm");
+						var noengr=$(".nonEngravingForm");
+						var display;
+						$(engr).css("display", "none");
+						$(noengr).css("display", "none");
+						$("#infoPanel").css("height", "400px");
+						
+						for(var i=0; i<engr.length; i++)
+							{
+								if(engr[i].id.indexOf(productName)>=0)
+									display=engr[i];
+							}
+						$(display).css("display", "block");
+						console.log(display.id);
+											
+					}
+					else
+					{
+						var engr=$(".engravingForm");
+						var noengr=$(".nonEngravingForm");
+						$(noengr).css("display", "none");
+						//$(noengr).css("display", "block");
+						$(engr).css("display", "none");
+						$("#infoPanel").css("height", "330px");
+						for(var i=0; i<noengr.length; i++)
+							{
+								if(noengr[i].id.indexOf(productName)>=0)
+									display=noengr[i];
+							}
+						$(display).css("display", "block");
+						console.log(display.id);
+						
+					}
+					
+					
+						
+					
+				});
+			});
+		
+		$(document).ready(
+			function addToCart(){
+				$(".addToCart").click(function(){
+					itemsInCart=itemsInCart+1;
+					if(itemsInCart==1)
+					{
+						$("#cartBtn").find("h6").html(itemsInCart+" item in your cart");
+					}
+					else{
+						$("#cartBtn").find("h6").html(itemsInCart+" items in your cart");
+					}
+				});
+			
+			}
+		
+		);
+		
+	</script> 
+	
+</head>
+<body>
+
+<!--click on thrive logo action-->
+	<a id="thriveLogo" href="../index.html" style="position:absolute; top:-10.5%; left:16.5%; color:blue; height:10%; width:18%; z-index:2 ">
+		
+	</a>
+  
+	<!--Shopping cart-->
+		<div style=" float:right; margin:10px">
+			<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_cart">
+				<input type="hidden" name="business" value="lmcgorry1@yahoo.com">
+				<input type="hidden" name="display" value="1">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			</form>
+		</div>
+	
+	<!-- Nav and Banner -->
+	<div class="row" style="margin-top:7%;">
+		<div class="twelve columns">
+			<dl class="tabs eight-up contained">
+				<dd><a href="../index.html"><font color="black">Home</font></a></dd>
+				<dd class="selectedTab"><a href="products.html"><font color="white">Products</font></a></dd>
+				<dd><a href="aboutUS.html"><font color="black">About Us</font></a></dd>
+				<dd><a href="faqs.html"><font color="black">FAQs</font></a></dd>
+				<dd><a href="healthyRecipes.html"><font color="black">Healthy Recipes</font></a></dd>
+				<dd><a href="inspirationalPeople.html"><font color="black">Inspirations</font></a></dd>
+				<dd><a href="affiliates.html"><font color="black">Affiliates</font></a></dd>
+				<dd><a href="testemonials.html"><font color="black">Testemonials</font></a></dd>
+			</dl>
+			<ul class="tabs-content contained">
+				
+					<div class="row" style="margin-top: 1%; height:5%; border:none">
+						<div class="four columns">
+							<dl class="tabs pill two-up">
+								<dd class="active"><a href="products.html"><font color="white">Bracelets</font></a></dd>
+								<dd><a href="tshirts.html"><font color="black">Tshirts</font></a></dd>
+							</dl>
+						</div>
+					</div>
+				
+				
+			</ul>
+       	</div>
+  </div>
+	
+   <div class="row">
+    <div class="twelve columns">
+ 
+   
+ 
+      <div class="row">
+ 
+  <!-- Side Bar -->
+ 
+			<div id="detailsPane" class="four mobile-four columns">
+ 
+				<img id="selectedProductPic" src="../images/galleriaPics/trio5.jpg" style="height:283px; width:283px;" >
+				<!--src="http://placehold.it/500x500&text=Logo" "../images/galleriaPics/tshirt.jpg"-->
+				<div id="infoPanel" class="hide-for-small panel">
+					<h3>Please select a product</h3>
+					<h5 class="subheader">
+					
+					</h5>
+					<div id="productDetails" style="display:none">
+						
+						<!--Black Medical Alert Bracelet-->
+						<form class="engravingForm" id="Black Medical Alert Bracelet"  style="display:none" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="VVQC5GBR7DWWQ">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+								<tr><td><input type="hidden" name="on1" value="Engraving">Engraving</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+
+
+						<!--Blue Medical Alert Bracelet-->
+						<form class="engravingForm" id="Blue Medical Alert Bracelet"  style="display:none" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="EBAKDVHEEZ8HW">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+								<tr><td><input type="hidden" name="on1" value="Engraving">Engraving</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+
+											
+						<!--Burgundy Medical Alert Bracelet-->
+						<form class="engravingForm" id="Burgundy Medical Alert Bracelet"  style="display:none" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="LRPZSDQKTWRM2">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+								<tr><td><input type="hidden" name="on1" value="Engraving">Engraving</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+
+
+						<!--Dalmatian Medical Alert Bracelet-->
+						<form class="engravingForm" id="Dalmatian Medical Alert Bracelet"  style="display:none" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="6RVHAEWERKJB8">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>	
+								<tr><td><input type="hidden" name="on1" value="Engraving">Engraving</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+
+
+						<!--  Black Awareness Ribbon I.D. Bracelet -->
+						<form class="nonEngravingForm" id="Black Awareness Ribbon I.D. Bracelet" style="display:none" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="SNNFTLTA95YKL">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+						
+						<!--  Blue Awareness Ribbon I.D. Bracelet -->
+						<form class="nonEngravingForm" id="Blue Awareness Ribbon I.D. Bracelet" style="display:none" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="4K84WBJMR5FTU">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+						
+						<!--  Burgundy Awareness Ribbon I.D. Bracelet -->
+						<form class="nonEngravingForm" id="Burgundy Awareness Ribbon I.D. Bracelet" style="display:none" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="2EA3PH54NZ6NJ">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+
+						<!--  Dalmation Awareness Ribbon I.D. Bracelet -->
+						<form class="nonEngravingForm" id="Dalmatian Awareness Ribbon I.D. Bracelet" style="display:none" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="QWNC29QSYGP2N">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+
+						<!--  Black Thrive Bracelet -->
+						<form class="nonEngravingForm" id="Black Thrive Bracelet" target="paypal" style="display:none" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="QRN5J8JJ6AFYA">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+
+						<!--  Blue Thrive Bracelet -->
+						<form class="nonEngravingForm" id="Blue Thrive Bracelet" target="paypal" style="display:none" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="T369GGCU3E2FJ">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+						
+						<!--  Burgundy Thrive Bracelet -->
+						<form class="nonEngravingForm" id="Burgundy Thrive Bracelet" target="paypal" style="display:none" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="UKX7RYHPKWD2A">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+
+						<!--  Dalmation Thrive Bracelet -->
+						<form class="nonEngravingForm" id="Dalmatian Thrive Bracelet" style="display:none" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="8BAS7DVSZ787E">
+							<table>
+								<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+									<option value="Extra Small">Extra Small </option>
+									<option value="Small">Small </option>
+									<option value="Medium">Medium </option>
+									<option value="Large">Large </option>
+									<option value="Extra Large">Extra Large </option>
+								</select> </td></tr>
+							</table>
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+
+
+						
+						
+					</div>
+				
+				</div>
+ 
+          <!--<div id="cartBtn" class="panel callout radius" align="center"  style="background:#5DA423; border:1px solid #396516">
+            <h6>0&nbsp; items in your cart</h6>
+          </div>-->
+         
+ 
+        </div>
+ 
+    <!-- End Side Bar -->
+ 
+ 
+    <!-- Thumbnails -->
+ 
+        <div class="seven columns">
+          <div class="row">
+ 
+            <div class="four mobile-two columns">
+              <div class="productPanel">
+				<img src="..\images\productPics\product1.jpg">
+ 				<div id="panel1" class="panel" style="height:164px">
+					<h5>Black Awareness Ribbon I.D. Bracelet</h5>
+					<h6 class="subheader">$19.95</h6>
+				</div>
+			  </div>
+            </div>
+ 
+            <div class="four mobile-two columns">
+				<div class="productPanel">
+					<img src="..\images\productPics\product2.jpg">
+ 					<div id="panel2" class="panel productPanel" style="height:164px">
+						<h5>Black Medical Alert Bracelet</h5>
+						<h6 class="subheader">$24.95</h6>
+					</div>
+				</div>
+            </div>
+ 
+            <div class="four mobile-two columns">
+				<div class="productPanel">
+					<img src="..\images\productPics\product3.jpg">
+ 
+					<div id="panel3" class="panel productPanel" style="height:164px">
+						<h5>Black Thrive Bracelet</h5>
+						<h6 class="subheader">$19.95</h6>
+					</div>
+				</div>
+            </div>
+            
+            <div class="four mobile-two columns">
+				<div class="productPanel">
+					<img src="..\images\productPics\product4.jpg">
+ 
+					<div id="panel4" class="panel productPanel" style="height:164px">
+						<h5>Blue Awareness Ribbon I.D. Bracelet</h5>
+						<h6 class="subheader">$19.95</h6>
+					</div>
+				</div>
+            </div>
+ 
+            <div class="four mobile-two columns">
+				<div class="productPanel">
+					<img src="..\images\productPics\product5.jpg">
+ 
+					<div id="panel5" class="panel productPanel" style="height:164px">
+						<h5>Blue Medical Alert Bracelet</h5>
+						<h6 class="subheader">$24.95</h6>
+					</div>
+				</div>
+            </div>
+ 
+            <div class="four mobile-two columns">
+				<div class="productPanel">
+					<img src="..\images\productPics\product6.jpg">
+ 
+					<div id="panel6" class="panel productPanel" style="height:164px">
+						<h5>Blue Thrive Bracelet</h5>
+						<h6 class="subheader">$19.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+				<div class="productPanel">             
+					<img src="..\images\productPics\product7.jpg">
+ 
+					<div id="panel7" class="panel productPanel" style="height:164px">
+						<h5>Burgundy Awareness Ribbon I.D. Bracelet</h5>
+						<h6 class="subheader">$19.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+				<div class="productPanel">
+					<img src="..\images\productPics\product8.jpg">
+ 
+					<div id="panel8" class="panel productPanel" style="height:164px">
+						<h5>Burgundy Medical Alert Bracelet</h5>
+						<h6 class="subheader">$24.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+               <div class="productPanel">
+					<img src="..\images\productPics\product9.jpg">
+					<div id="panel9" class="panel productPanel" style="height:164px">
+						<h5>Burgundy Thrive Bracelet</h5>
+						<h6 class="subheader">$19.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+				 <div class="productPanel">
+					<img src="..\images\productPics\product10.jpg">
+					<div id="panel10" class="panel productPanel" style="height:164px">
+						<h5>Dalmatian Awareness Ribbon I.D. Bracelet</h5>
+						<h6 class="subheader">$19.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+               <div class="productPanel">
+					<img src="..\images\productPics\product11.jpg">
+					<div id="panel11" class="panel productPanel" style="height:164px">
+						<h5>Dalmatian Medical Alert Bracelet</h5>
+						<h6 class="subheader">$24.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+               <div class="productPanel">
+					<img src="..\images\productPics\product12.jpg">
+ 
+					<div id="panel12" class="panel productPanel" style="height:164px">
+						<h5>Dalmatian Thrive Bracelet</h5>
+						<h6 class="subheader">$19.95</h6>
+					</div>
+              </div>
+            </div>
+			<a id="addToCart" href="productspg2.html" class="radius button right custBtn" style="left:-15">More products  &rarr;</a>
+			
+			
+			
+          <!--  <div class="four mobile-two columns">
+				<div class="productPanel">             
+					<img src="..\images\productPics\product13.jpg">
+ 
+					<div id="panel13" class="panel productPanel" style="height:164px">
+						<h5>Green Awareness Ribbon I.D. Bracelet</h5>
+						<h6 class="subheader">$19.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+               <div class="productPanel">
+					<img src="..\images\productPics\product14.jpg">
+ 
+					<div id="panel14" class="panel productPanel" style="height:164px">
+						<h5>Green Medical Alert Bracelet</h5>
+						<h6 class="subheader">$24.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+				<div class="productPanel">	
+					<img src="..\images\productPics\product15.jpg">
+ 
+					<div id="panel15" class="panel productPanel" style="height:164px">
+						<h5>Green Thrive Bracelet</h5>
+						<h6 class="subheader">$19.95<br><br><br><br></h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+				<div class="productPanel">
+					<img src="..\images\productPics\product16.jpg" >
+ 
+					<div id="panel16" class="panel productPanel" style="height:164px">
+						<h5>Pink Awareness Ribbon I.D. Bracelet</h5>
+						<h6 class="subheader">$19.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+               <div class="productPanel">
+					<img src="..\images\productPics\product17.jpg">
+ 
+					<div id="panel17" class="panel productPanel" style="height:164px">
+						<h5>Pink Medical Alert Bracelet</h5>
+						<h6 class="subheader">$24.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+				 <div class="productPanel">
+				<img src="..\images\productPics\product18.jpg">
+ 
+					<div id="panel18" class="panel productPanel" style="height:164px">
+						<h5>Pink Thrive Bracelet</h5>
+						<h6 class="subheader">$19.95<br><br><br><br></h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns">
+               <div class="productPanel">
+					<img src="..\images\productPics\product19.jpg">
+ 
+					<div id="panel19" class="panel productPanel" style="height:164px">
+						<h5>Sandstone Awareness Ribbon I.D. Bracelet</h5>
+						<h6 class="subheader">$19.95</h6>
+					</div>
+              </div>
+            </div>
+
+            <div class="four mobile-two columns" >
+               <div class="productPanel">
+					<img src="..\images\productPics\product20.jpg">
+ 
+					<div id="panel20" class="panel productPanel" style="height:164px">
+						<h5>Sandstone Medical Alert Bracelet</h5>
+						<h6 class="subheader">$24.95</h6>
+					</div>
+				</div>
+            </div>-->
+ 
+    <!-- End Thumbnails -->
+ 
+ 
+    
+ 
+          </div>
+        </div>
+      </div>
+ 
+ 
+   
+    </div>
+  </div>
+  
+
+
+  
+  
+  
+  <!-- Footer -->
+
+  <footer class="row">
+    <div class="twelve columns">
+      <hr />
+      <div class="row">
+        <div class="six columns">
+          <p>&copy; Content copyright 2010-2013. Thrive Bracelets. All rights reserved.</p>
+        </div>
+       
+      </div>
+    </div>
+  </footer>
+
+  <!-- Included JS Files -->
+  <script src="../public/assets/templates.js"></script>
+
+</body>
+</html>
+
+

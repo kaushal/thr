@@ -1,0 +1,163 @@
+<DOCCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Inspirational, stylish medical alert and breast cancer bracelets</title>
+
+  <!-- Included CSS Files -->
+  <!-- Included CSS Files -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script src="galleria/galleria-1.2.8.min.js"></script>
+  <link rel="stylesheet" href="foundation/stylesheets/foundation.css">
+  
+  <style>
+    #galleria{ width: 700px; height: 400px; background: #000; margin-left: auto ;
+  margin-right: auto ;}
+	
+	
+	body {background-image:url('images/logobackground.jpg');}
+	
+	.selectedTab {background:#228B22; font-weight:bold;  
+			-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000; box-shadow: 3px 3px 4px #000;	/* For IE 8 */	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+	margin-bottom:10px;
+					}
+	.custBtn{background:#5DA423; font-weight:bold;  
+			-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000; box-shadow: 3px 3px 4px #000;	/* For IE 8 */	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+	margin-bottom:10px;
+			}
+	.custBtn:hover{background-color: #457A1A;}
+  </style>
+  <script>
+          Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+         
+		
+		 $('#galleria').galleria({
+		extend: function() {
+			this.play(5000); // will advance every 5th second
+			}
+	});
+		
+		  
+  </script>  
+</head>
+<body>
+
+<!--Shopping cart-->
+		<div style=" float:right; margin:10px">
+			<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_cart">
+				<input type="hidden" name="business" value="lmcgorry1@yahoo.com">
+				<input type="hidden" name="display" value="1">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			</form>
+		</div>
+  <!-- Nav and Banner -->
+	<div class="row" style="margin-top:5%;" >
+		<div class="twelve columns">
+	
+			<dl class="tabs seven-up contained">
+				<dd class="selectedTab"><a href="#evenTab1"><font color="white">Home</font></a></dd><!--in order to edit how active tab looks, edit Home and remove class="active"-->
+				<dd><a href="otherPages/products.html"><font color="black">Products</font></a></dd>
+				<dd><a href="otherPages/aboutUS.html"><font color="black">About Us</font></a></dd>
+				<dd><a href="otherPages/faqs.html"><font color="black">FAQs</font></a></dd>
+				<dd><a href="otherPages/healthyRecipes.html"><font color="black">Healthy Recipes</font></a></dd>
+				<dd><a href="otherPages/inspirationalPeople.html"><font color="black">Inspirational People</font></a></dd>
+				<dd><a href="otherPages/affiliates.html"><font color="black">Affiliates</font></a></dd>
+				
+			</dl>
+	
+			<div style="height:5%;">
+		
+			</div>
+      <!-- Main Banner Image - place in a paragraph to enforce the modular scale spacing -->
+			<div id="galleria" style="margin-top:20px; top:500px;">
+				<img src="images/galleriaPics/tshirt.jpg">
+				<img src="images/galleriaPics/trio.jpg">
+				<img src="images/galleriaPics/trio1.jpg">
+				<img src="images/galleriaPics/tshirt1.jpg">
+				<img src="images/galleriaPics/trio2.jpg">
+				<img src="images/galleriaPics/trio3.jpg">
+				<img src="images/galleriaPics/tshirt2.jpg">
+		
+			</div> 
+		</div>
+	</div>
+
+  <!-- End Nav and Banner -->
+ 
+  
+      
+
+  <!-- Main Content Section -->
+
+  <div class="row" style="margin-top:20px; margin-bottom:3px; margin-left:auto; margin-right:auto;">
+
+    <div class="eight columns centered">
+	
+	<div class="panel radius">
+	 <h4>Our Mission</h4>
+      <p>We here at Thrive Bracelets seek to provide people with bracelets that are not only stylish accent pieces, but that also look and feel great. Our bracelets have a deeper meaing that will resonate well with anyone who has a vision to thrive beyond any situation</p>
+      <p><a href="otherPages/aboutUS.html" class="radius small button custBtn"  style="border: 1px solid #396516;">More &rarr;</a></p>
+	</div>
+     
+    </div>
+
+    
+  </div>
+
+
+  <!-- Call to Action Panel -->
+  <div class="row">
+    <div class="twelve columns">
+
+      <div class="panel radius">
+        <h4>Get in touch!</h4>
+
+        <div class="row">
+          <div class="nine columns">
+            <p>We'd love to hear from you</p>
+          </div>
+          <div class="three columns">
+            <a href="mailto:insertemailhere@lisa'semail.com" class="radius button right custBtn" style="border: 1px solid #396516;">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <center>
+  <a href="https://www.facebook.com/pages/Thrive-Bracelets/132696226779997?fref=ts"><img src="images/fb.png" style="display: block float:left" ></img>
+  <a href="Insert twitter link here"><img src="images/twitter.png" style="float:right display:block"></img>
+</center>
+
+  <!-- Footer -->
+
+  <footer class="row">
+    <div class="twelve columns">
+      <hr />
+      <div class="row">
+        <div class="six columns">
+          <p>&copy; Content copyright 2010-2013. Thrive Bracelets. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Included JS Files -->
+  <script src="../public/assets/templates.js"></script>
+
+</body>
+</html>
+
+
